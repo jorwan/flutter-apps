@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class HomePage extends StatelessWidget {
 
   final TextStyle textStyle = TextStyle(fontSize: 25);
+  final int contador = 10;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class HomePage extends StatelessWidget {
               style: textStyle
             ),
             Text(
-              '0',
+              '$contador',
               style: textStyle
             )
           ],
@@ -32,6 +33,7 @@ class HomePage extends StatelessWidget {
           print('Clicked!!');
         },
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
