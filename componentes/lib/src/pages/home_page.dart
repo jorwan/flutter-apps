@@ -1,7 +1,10 @@
-import 'package:componentes/src/utils/icon_helper.dart';
 import 'package:flutter/material.dart';
 
 import 'package:componentes/src/providers/user_provider.dart';
+
+import 'package:componentes/src/utils/icon_helper.dart';
+
+import 'package:componentes/src/pages/user_detail.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -19,22 +22,33 @@ class HomePage extends StatelessWidget {
     initialData: [],
     builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) 
       => ListView(
-        children: _getListItems(snapshot.data),
+        children: _getListItems(snapshot.data, context),
       )
   );
 
-  List<Widget> _getListItems(List<dynamic> items) {
+  List<Widget> _getListItems(List<dynamic> items, BuildContext context) {
     final List<Widget> _items = [];
     items.forEach((item) {
-      _items.add(
-        ListTile(
-          title: Text(item['name']),
-          subtitle: Text(item['email']),
-          leading: Icon(getIcon('account_circle')),
-          trailing: Icon(Icons.keyboard_arrow_right),
+      _items
+        ..add(
+          ListTile(
+            title: Text(item['name']),
+            subtitle: Text(item['email']),
+            leading: Icon(getIcon('account_circle')),
+            trailing: Icon(Icons.keyboard_arrow_right),
+            onTap: () {
+              final MaterialPageRoute userDetail = MaterialPageRoute(
+                builder: (BuildContext context) => UserDetail()
+              );
+
+              Navigator.push(context, userDetail).then((onValue) {
+                print('---onValue---');
+                print(onValue);
+              });
+            },
+          )
         )
-      );
-      _items.add(Divider());
+        ..add(Divider());
     });
     return _items;
   }
