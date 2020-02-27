@@ -1,3 +1,4 @@
+import 'package:componentes/src/utils/icon_helper.dart';
 import 'package:flutter/material.dart';
 
 import 'package:componentes/src/providers/user_provider.dart';
@@ -29,7 +30,7 @@ class HomePage extends StatelessWidget {
         ListTile(
           title: Text(item['name']),
           subtitle: Text(item['email']),
-          leading: Icon(Icons.account_circle),
+          leading: Icon(getIcon('account_circle')),
           trailing: Icon(Icons.keyboard_arrow_right),
         )
       );
