@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       initialRoute: router.getInitialRoute(),
       routes: router.getRoutes(),
+      onGenerateRoute: router.onGenerateRoute(),
     );
   }
 }

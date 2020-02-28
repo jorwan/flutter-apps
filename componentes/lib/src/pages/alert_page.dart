@@ -5,7 +5,7 @@ class AlertPage extends StatelessWidget {
   Widget build(BuildContext context)
     => Scaffold(
       appBar: AppBar(
-        title: Text('Alert Page'),
+        title: Text('Alert'),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.keyboard_arrow_left),

@@ -16,14 +16,21 @@ final Map<String, Widget Function(BuildContext context)> _routes = {
 
 class Router {
   String _initialRoute;
+  String _onFailRoute;
 
   Router(){
     this._initialRoute = '/';
+    this._onFailRoute = 'alert';
   }
 
   String getInitialRoute() => _initialRoute;
 
   Map<String, Widget Function(BuildContext context)> getRoutes() => _routes;
+
+  Route Function(RouteSettings setting) onGenerateRoute() 
+    => (RouteSettings setting) => MaterialPageRoute(
+    builder: _routes[_onFailRoute]
+  );
 }
 
 final Router router = Router();
