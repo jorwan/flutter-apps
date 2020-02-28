@@ -1,0 +1,19 @@
+{
+  "routes" : [
+    {
+      "route"  : "alert",
+      "icon"   : "add_alert",
+      "title"  : "Alert"
+    },
+    {
+      "route"  : "avatar",
+      "icon"   : "accessibility",
+      "title"  : "Avatar"
+    },
+    {
+      "route"  : "card",
+      "icon"   : "folder_open",
+      "title"  : "Cards"
+    }
+  ]
+}

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 final Map<String, IconData> _icons = {
-  'account_circle' : Icons.account_circle,
-  'local_movies' : Icons.local_movies
+  'add_alert' : Icons.add_alert,
+  'accessibility' : Icons.accessibility,
+  'folder_open' : Icons.folder_open
 };
 
 IconData getIcon(String iconName) => _icons[iconName];

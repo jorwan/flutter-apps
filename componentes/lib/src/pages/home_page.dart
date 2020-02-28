@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:componentes/src/providers/user_provider.dart';
+import 'package:componentes/src/providers/route_provider.dart';
 
 import 'package:componentes/src/utils/icon_helper.dart';
-
-import 'package:componentes/src/pages/user_detail.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -18,7 +16,7 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _getLista() => FutureBuilder(
-    future: userProvider.getData(),
+    future: routeProvider.getRoutes(),
     initialData: [],
     builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) 
       => ListView(
@@ -32,19 +30,11 @@ class HomePage extends StatelessWidget {
       _items
         ..add(
           ListTile(
-            title: Text(item['name']),
-            subtitle: Text(item['email']),
-            leading: Icon(getIcon('account_circle')),
+            title: Text(item['title']),
+            leading: Icon(getIcon(item['icon'])),
             trailing: Icon(Icons.keyboard_arrow_right),
             onTap: () {
-              final MaterialPageRoute userDetail = MaterialPageRoute(
-                builder: (BuildContext context) => UserDetail()
-              );
-
-              Navigator.push(context, userDetail).then((onValue) {
-                print('---onValue---');
-                print(onValue);
-              });
+              Navigator.pushNamed(context, item['route']);
             },
           )
         )
