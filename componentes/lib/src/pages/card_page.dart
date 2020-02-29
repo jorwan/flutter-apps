@@ -46,12 +46,29 @@ class CardPage extends StatelessWidget {
     );
 
   Widget _getCard2()
-    => Card(
+    => Container(
+      decoration: BoxDecoration(
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.black,
+            blurRadius: 15.0,
+            offset: Offset(15.0, 25.0),
+            spreadRadius: -20.0
+          )
+        ]
+      ),
+      padding: EdgeInsets.symmetric(
+        horizontal: 5.0
+      ),
       child: Column(
         children: <Widget>[
-          FadeInImage(
-            image: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/8/81/Parque_Eagle_River%2C_Anchorage%2C_Alaska%2C_Estados_Unidos%2C_2017-09-01%2C_DD_02.jpg'),
-            placeholder: AssetImage('images/loading.gif'),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: FadeInImage(
+              fit: BoxFit.fitHeight,
+              image: AssetImage('images/landscape.jpg'),
+              placeholder: AssetImage('images/loading.gif'),
+            ),
           )
           // Image(
           //   image: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/8/81/Parque_Eagle_River%2C_Anchorage%2C_Alaska%2C_Estados_Unidos%2C_2017-09-01%2C_DD_02.jpg')
