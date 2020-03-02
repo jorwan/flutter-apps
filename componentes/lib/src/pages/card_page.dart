@@ -14,7 +14,7 @@ class CardPage extends StatelessWidget {
           SizedBox(
             height: 30.0,
           ),
-          _getCard2()
+          _getCard2(context)
         ]
       ),
     );
@@ -45,15 +45,15 @@ class CardPage extends StatelessWidget {
       )
     );
 
-  Widget _getCard2()
+  Widget _getCard2(BuildContext context)
     => Container(
       decoration: BoxDecoration(
         boxShadow: <BoxShadow>[
           BoxShadow(
             color: Colors.black,
-            blurRadius: 15.0,
-            offset: Offset(15.0, 25.0),
-            spreadRadius: -20.0
+            blurRadius: 25.0,
+            offset: Offset(10.0, 10.0),
+            spreadRadius: -10.0
           )
         ]
       ),
@@ -65,6 +65,9 @@ class CardPage extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: FadeInImage(
+              height: 250.0,
+              width: MediaQuery.of(context).size.width - 10,
+              fadeInDuration: Duration(milliseconds: 10000),
               fit: BoxFit.fitHeight,
               image: AssetImage('images/landscape.jpg'),
               placeholder: AssetImage('images/loading.gif'),

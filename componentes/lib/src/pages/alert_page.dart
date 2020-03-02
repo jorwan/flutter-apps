@@ -7,6 +7,36 @@ class AlertPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Alert'),
       ),
+      body: Center(
+        child: RaisedButton(
+          child: Text("Show Alert"),
+          shape: StadiumBorder(),
+          color: Colors.blue,
+          textColor: Colors.white,
+          onPressed: () {
+            showDialog(
+              context: context,
+              barrierDismissible: true,
+              builder: (BuildContext context) 
+                => AlertDialog(
+                  title: Text("Alerta!"),
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Text("Contenido...")
+                    ]
+                  ),
+                  actions: <Widget>[
+                    FlatButton(
+                      onPressed: (){}, 
+                      child: Text("Ok")
+                    )
+                  ],
+                )
+            );
+          },
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.keyboard_arrow_left),
         onPressed: () {
