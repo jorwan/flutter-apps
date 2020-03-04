@@ -17,9 +17,9 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
 
   bool _play = false;
 
-  int _speed = 100;
-  int _visibleSpeed = 100;
-  int _maxSpeed = 120;
+  int _speed = 1000;
+  int _visibleSpeed = 10;
+  int _maxSpeed = 110;
   int _minSpeed = 0;
 
   int _nextSpeed = 100;
@@ -48,7 +48,7 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
             borderRadius: _borderRadius
           ), 
           duration: Duration(
-            milliseconds: 200
+            milliseconds: _speed ~/ 2
           ),
         )
       ),
@@ -138,11 +138,11 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
         break;
       }
       
+      Random random = Random();
+      _width = random.nextInt(300).toDouble();
+      _height = random.nextInt(300).toDouble(); 
       setState(() {
-        Random random = Random();
-
-        _width = random.nextInt(300).toDouble(); 
-        _height = random.nextInt(300).toDouble(); 
+        double minValue = 60.0;
         _color = Color.fromRGBO(
           random.nextInt(255), 
           random.nextInt(255), 
@@ -150,7 +150,7 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
           random.nextDouble()
         );
         _borderRadius = BorderRadius.circular(
-          random.nextInt(50).toDouble()
+          random.nextInt(50).toDouble() + 30
         );
       });
     }
