@@ -67,7 +67,7 @@ class CardPage extends StatelessWidget {
             child: FadeInImage(
               height: 250.0,
               width: MediaQuery.of(context).size.width - 10,
-              fadeInDuration: Duration(milliseconds: 10000),
+              fadeInDuration: Duration(milliseconds: 100),
               fit: BoxFit.fitHeight,
               image: AssetImage('images/landscape.jpg'),
               placeholder: AssetImage('images/loading.gif'),
