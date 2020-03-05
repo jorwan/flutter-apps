@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 
-main() => runApp(LoginApp());
-
-class LoginApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) 
-    => MaterialApp(
-      home: Scaffold(
-        body: LoginPage(),
-      ),
-    );
-}
+main() => runApp(
+  MaterialApp(
+    home: LoginPage(),
+  )
+);
 
 class LoginPage extends StatefulWidget {
   @override
@@ -29,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
   bool _next = true;
 
   List<Map<String, dynamic>> _animationSettings;
-  int _animationSettingsIndex = 0;
+  int _animationSettingsIndex = 1;
 
   @override
   void initState(){
@@ -58,6 +52,21 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    var _bottomLinearGradient = LinearGradient(
+      colors: <Color>[
+        Colors.yellow[900],
+        Colors.yellow[600],
+        Colors.yellow[400],
+      ]
+    );
+    var _topLinearGradient = LinearGradient(
+      colors: <Color>[
+        Colors.orange[900],
+        Colors.orange[600],
+        Colors.orange[400],
+      ]
+    );
+
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.play_arrow),
@@ -72,36 +81,58 @@ class _LoginPageState extends State<LoginPage> {
       body: Container(
         child: Column(
           children: <Widget>[
-            SizedBox(height: _topBarHeight,),
+            // SizedBox(height: _topBarHeight,),
             Container(
               height: (MediaQuery.of(context).size.height - _topBarHeight) / 4,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                color: _bottomColor
+                gradient: _topLinearGradient
               ),
               child: AnimatedContainer(
                 height: (MediaQuery.of(context).size.height - _topBarHeight) / 2,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                  color: _topColor,
+                  gradient: _bottomLinearGradient,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(_bottomLeftBorder)
                   )
                 ),
                 duration: Duration(milliseconds: 800),
+                child: Center(
+                  child: ShaderMask(
+                    shaderCallback: (bounds) => RadialGradient(
+                      center: Alignment.topLeft,
+                      radius: 1.0,
+                      colors: <Color>[
+                        Colors.orange[900],
+                        Colors.orange[600],
+                      ]
+                    ).createShader(bounds),
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 50.0,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
             Expanded(
               child: Container(
-                width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
+                  gradient: _bottomLinearGradient,
                   color: _topColor
                 ),
                 child: AnimatedContainer(
                   height: (MediaQuery.of(context).size.height - _topBarHeight) / 2,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    color: _bottomColor,
+                    // color: _bottomColor,
+                    gradient: _topLinearGradient,
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(_topRightBorder)
                     )
